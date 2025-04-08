@@ -30,11 +30,31 @@ class Quiz {
     }
 
     hasEnded() {
-        if (this.currentQuestionIndex<this.questions.length) {
+        if (this.currentQuestionIndex < this.questions.length) {
             return false
         }
-        if (this.currentQuestionIndex=this.questions.length) {
+        if (this.currentQuestionIndex = this.questions.length) {
             return true
         }
     }
+
+    filterQuestionsByDifficulty(difficulty) {
+        if (typeof difficulty !== "number" || difficulty > 3 || difficulty < 1) {
+            return this.questions;
+        }
+        
+        this.questions = this.questions.filter((question) => {
+            return question.difficulty === difficulty;
+        })
+        }
+
+        averageDifficulty() {
+        
+        const total = this.questions.reduce (function(acc,dif){
+        return acc + dif.difficulty
+        },0)
+
+        return total / this.questions.length
+
+        }
 }
