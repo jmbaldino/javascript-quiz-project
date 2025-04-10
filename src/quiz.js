@@ -23,7 +23,7 @@ class Quiz {
     }
 
     checkAnswer(answer) {
-        if (answer) {
+        if (answer === this.questions[this.currentQuestionIndex].answer) {
             this.correctAnswers += 1;
         }
     }
@@ -32,7 +32,7 @@ class Quiz {
         if (this.currentQuestionIndex < this.questions.length) {
             return false
         }
-        if (this.currentQuestionIndex = this.questions.length) {
+        if (this.currentQuestionIndex === this.questions.length) {
             return true
         }
     }
@@ -54,4 +54,10 @@ class Quiz {
 
         return total / this.questions.length
     }
+    /* restartQuiz() {
+    quiz.currentQuestionIndex = 0;
+    quiz.correctAnswers = 0;
+    quiz.shuffleQuestions();
+    showQuestion();
+    }                   this is a souvenir of something that should have never been attempted   */
 }
